@@ -1,0 +1,26 @@
+<app-filter-customers (changed)="inputChanged($event)"></app-filter-customers>
+
+<div class="customer-display header">
+  <div>ID</div>
+  <div (click)="sort('name')">Name</div>
+  <div (click)="sort('city')">City</div>
+  <div (click)="sort('orderTotal')">Order total</div>
+  <div>Customer since</div>
+</div>
+<div *ngFor="let customer of filteredCustomers" class="customer-display">
+  <div>{{ customer.id }}</div>
+  <div>{{ customer.name | capitaliseAll }}</div>
+  <div>{{ customer.city }}</div>
+  <div>{{ customer.orderTotal | currency:currencyCode:'symbol' }}</div>
+  <div>{{ customer.customerSince | date }}</div>
+</div>
+<div *ngIf="!filteredCustomers.length"  class="align-center">
+  No customers found.
+</div>
+<div class="customer-display footer" *ngIf="filteredCustomers.length">
+  <div></div>
+  <div>No. of customers : <strong>{{filteredCustomers.length}}</strong></div>
+  <div class="align-right">Total Order : </div>
+  <div><strong>{{ totalOrder | currency:currencyCode:'code' }}</strong></div>
+  <div></div>
+</div>
