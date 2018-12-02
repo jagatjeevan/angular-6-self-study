@@ -11,7 +11,7 @@ script:
 deploy:
   provider: pages
   skip-cleanup: true
-  github-token: ANGULAR_SELF_STUDY
+  github-token: ${ANGULAR_SELF_STUDY}
   local-dir: dist/angular-self-study
   keep-history: true
   on:
