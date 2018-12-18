@@ -9,13 +9,8 @@ import { ICustomerData } from '../shared/interface';
 export class CustomerDataService {
   baseUrl: string = 'assets/';
 
-  getData(): Observable<ICustomerData> {
-    return this.http.get(this.baseUrl + 'customer.json')
-      .pipe(catchError(this.errorHandling));
-  }
-
-  private errorHandling(error: any) {
-    console.log("some error", error);
+  getData() {
+    return this.http.get(this.baseUrl + 'customer.json');
   }
 
   constructor(private http: HttpClient) {

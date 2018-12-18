@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ICustomer, ICustomerData } from './shared/interface';
 import { CustomerDataService } from './core/customer-data.service';
-import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +15,8 @@ export class AppComponent implements OnInit {
     this._custDataService.getData()
       .subscribe((data: ICustomerData) => {
         this.people = data.customers;
-      });
+      })
+      ;
   }
 
   deteRow(id: number) {
