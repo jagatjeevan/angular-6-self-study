@@ -5,3 +5,7 @@ export interface ICustomer {
   orderTotal?: number;
   customerSince: any;
 };
+
+export interface ICustomerData {
+  customers: ICustomer[]
+}

@@ -40,6 +40,7 @@ export class CustomerListingComponent implements OnInit {
   ngOnChanges(changes: any) {
     console.log("changes should reflect here", changes);
     this.filteredCustomers = changes.customers.currentValue;
+    this.calculateTotalOrder();
   }
 
   compare(a, b, prop) {

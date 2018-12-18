@@ -17,10 +17,10 @@ import { NavbarComponent } from './navbar/navbar.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     CustomersModule,
     CoreModule,
-    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

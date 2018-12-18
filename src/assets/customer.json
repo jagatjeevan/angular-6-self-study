@@ -1,0 +1,93 @@
+{
+  "customers": [{
+    "id": 1,
+    "name": "john doe",
+    "city": "Phoenix",
+    "orderTotal": 9.99,
+    "customerSince": "2014-08-09T18:30:00.000Z"
+  },
+  { "id": 2,
+    "name": "Jane doe",
+    "city": "Chandler",
+    "orderTotal": 19.99,
+    "customerSince": "2014-08-09T18:30:00.000Z"
+  },
+  { "id": 3,
+    "name": "Michelle thomas",
+    "city": "Seattle",
+    "orderTotal": 99.99,
+    "customerSince": "2014-08-09T18:30:00.000Z"
+  },
+  { "id": 4,
+    "name": "Jim thomas",
+    "city": "New York",
+    "orderTotal": 599.99,
+    "customerSince": "2014-08-09T18:30:00.000Z"
+  },
+  { "id": 11,
+    "name": "jeevan",
+    "city": "Cuttack",
+    "orderTotal": 1279.99,
+    "customerSince": "2014-08-09T18:30:00.000Z"
+  },
+  { "id": 12,
+    "name": "john doe",
+    "city": "Phoenix",
+    "orderTotal": 9.99,
+    "customerSince": "2014-08-09T18:30:00.000Z"
+  },
+  { "id": 32,
+    "name": "Jane doe",
+    "city": "Chandler",
+    "orderTotal": 19.99,
+    "customerSince": "2014-08-09T18:30:00.000Z"
+  },
+  { "id": 34,
+    "name": "Michelle thomas",
+    "city": "Seattle",
+    "orderTotal": 99.99,
+    "customerSince": "2014-08-09T18:30:00.000Z"
+  },
+  { "id": 41,
+    "name": "Jim Thomas",
+    "city": "New York",
+    "orderTotal": 599.99,
+    "customerSince": "2014-08-09T18:30:00.000Z"
+  },
+  { "id": 121,
+    "name": "jeevan",
+    "city": "Cuttack",
+    "orderTotal": 1279.99,
+    "customerSince": "2014-08-09T18:30:00.000Z"
+  },
+  { "id": 1212,
+    "name": "john doe",
+    "city": "Phoenix",
+    "orderTotal": 9.99,
+    "customerSince": "2014-08-09T18:30:00.000Z"
+  },
+  { "id": 24,
+    "name": "Jane doe",
+    "city": "Chandler",
+    "orderTotal": 19.99,
+    "customerSince": "2014-08-09T18:30:00.000Z"
+  },
+  { "id": 43,
+    "name": "Michelle thomas",
+    "city": "Seattle",
+    "orderTotal": 99.99,
+    "customerSince": "2014-08-09T18:30:00.000Z"
+  },
+  { "id": 54,
+    "name": "Jim Thomas",
+    "city": "New York",
+    "orderTotal": 599.99,
+    "customerSince": "2014-08-09T18:30:00.000Z"
+  },
+  { "id": 1210,
+    "name": "jagat jeevan",
+    "city": "Cuttack",
+    "orderTotal": 1279.99,
+    "customerSince": "2014-08-09T18:30:00.000Z"
+  }
+]}
