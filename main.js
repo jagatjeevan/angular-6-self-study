@@ -112,11 +112,14 @@ var AppComponent = /** @class */ (function () {
         this.people = [];
     }
     AppComponent.prototype.changePeople = function () {
-        this.people = this._custDataService.getData();
+        var _this = this;
+        this._custDataService.getData()
+            .subscribe(function (data) {
+            _this.people = data.customers;
+        });
     };
-    AppComponent.prototype.deteRow = function (data) {
-        this._custDataService.deleteData(data);
-        this.changePeople();
+    AppComponent.prototype.deteRow = function (id) {
+        this.people = this.people.filter(function (item) { return item.id != id; });
     };
     AppComponent.prototype.ngOnInit = function () {
         this.changePeople();
@@ -182,10 +185,10 @@ var AppModule = /** @class */ (function () {
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"],
                 _customers_customers_module__WEBPACK_IMPORTED_MODULE_3__["CustomersModule"],
                 _core_core_module__WEBPACK_IMPORTED_MODULE_5__["CoreModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
             ],
             providers: [],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]]
@@ -210,13 +213,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CoreModule", function() { return CoreModule; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var _customer_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./customer-data.service */ "./src/app/core/customer-data.service.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _customer_data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./customer-data.service */ "./src/app/core/customer-data.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -227,9 +232,10 @@ var CoreModule = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
             declarations: [],
             imports: [
-                _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"]
+                _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClientModule"],
             ],
-            providers: [_customer_data_service__WEBPACK_IMPORTED_MODULE_2__["CustomerDataService"]]
+            providers: [_customer_data_service__WEBPACK_IMPORTED_MODULE_3__["CustomerDataService"]]
         })
     ], CoreModule);
     return CoreModule;
@@ -250,6 +256,7 @@ var CoreModule = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CustomerDataService", function() { return CustomerDataService; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -260,36 +267,18 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var CustomerDataService = /** @class */ (function () {
-    function CustomerDataService() {
-        this._recordList = [
-            { id: 1, name: 'john doe', city: 'Phoenix', orderTotal: 9.99, customerSince: new Date(2014, 7, 10) },
-            { id: 2, name: 'Jane doe', city: 'Chandler', orderTotal: 19.99, customerSince: new Date(2017, 2, 22) },
-            { id: 3, name: 'Michelle thomas', city: 'Seattle', orderTotal: 99.99, customerSince: new Date(2002, 10, 31) },
-            { id: 4, name: 'Jim thomas', city: 'New York', orderTotal: 599.99, customerSince: new Date(2002, 10, 31) },
-            { id: 11, name: 'jeevan', city: 'Cuttack', orderTotal: 1279.99, customerSince: new Date(2018, 7, 10) },
-            { id: 12, name: 'john doe', city: 'Phoenix', orderTotal: 9.99, customerSince: new Date(2014, 7, 10) },
-            { id: 32, name: 'Jane doe', city: 'Chandler', orderTotal: 19.99, customerSince: new Date(2017, 2, 22) },
-            { id: 34, name: 'Michelle thomas', city: 'Seattle', orderTotal: 99.99, customerSince: new Date(2002, 10, 31) },
-            { id: 41, name: 'Jim Thomas', city: 'New York', orderTotal: 599.99, customerSince: new Date(2002, 10, 31) },
-            { id: 121, name: 'jeevan', city: 'Cuttack', orderTotal: 1279.99, customerSince: new Date(2018, 7, 10) },
-            { id: 1212, name: 'john doe', city: 'Phoenix', orderTotal: 9.99, customerSince: new Date(2014, 7, 10) },
-            { id: 24, name: 'Jane doe', city: 'Chandler', orderTotal: 19.99, customerSince: new Date(2017, 2, 22) },
-            { id: 43, name: 'Michelle thomas', city: 'Seattle', orderTotal: 99.99, customerSince: new Date(2002, 10, 31) },
-            { id: 54, name: 'Jim Thomas', city: 'New York', orderTotal: 599.99, customerSince: new Date(2002, 10, 31) },
-            { id: 1210, name: 'jagat jeevan', city: 'Cuttack', orderTotal: 1279.99, customerSince: new Date(2018, 7, 10) },
-        ];
-        this.records = this._recordList;
+    function CustomerDataService(http) {
+        this.http = http;
+        this.baseUrl = 'assets/';
     }
     CustomerDataService.prototype.getData = function () {
-        return this.records;
-    };
-    CustomerDataService.prototype.deleteData = function (id) {
-        this.records = this.records.filter(function (item) { return item.id != id; });
+        return this.http.get(this.baseUrl + 'customer.json');
     };
     CustomerDataService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
     ], CustomerDataService);
     return CustomerDataService;
 }());
@@ -374,6 +363,7 @@ var CustomerListingComponent = /** @class */ (function () {
     CustomerListingComponent.prototype.ngOnChanges = function (changes) {
         console.log("changes should reflect here", changes);
         this.filteredCustomers = changes.customers.currentValue;
+        this.calculateTotalOrder();
     };
     CustomerListingComponent.prototype.compare = function (a, b, prop) {
         if (a[prop] < b[prop])
